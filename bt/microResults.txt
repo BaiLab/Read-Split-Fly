@@ -1,0 +1,27 @@
+Running with options...
+  file with read data          /u1/h8/acox/bio/read-split-run/tmp/bowtie/Tg_Het.txt.unmapped.txt.split.bowtie.txt.split1stcolumn
+  max distance between matches 30000
+  length of samples            35
+  refFlat file                 /u1/h8/acox/bio/read-split-run/indexes/mm9.refFlat.txt
+  refFlat intron boundary file /u1/h8/acox/bio/read-split-run/indexes/mm9.refFlat.txt.intronBoundary.exonsgaps
+  minimum splice length        3
+  tolerance of difference in position for supporting reads  4
+  base of file name for writing results                     mm9_results//Tg_Het
+  minimum number of supporting reads                        2
+
+Finished processing data, results written to files.
+Number of entries in data file:             44045051
+Number of different reads:                  1360014
+Number of entries in refFlat file:          27960
+Number of entries in refFlat boundary file: 266256
+Number of matches:                          543253
+String table size:                          10279750
+VmRSS, memory resident set size:            5709860 kB
+Total time to process:                      1665 seconds
+
+GeneName	Chromosome	# supporting reads	splice length	range of supporting reads	Novel or not (*)	Bracketed sequence
+Xbp1	chr11	22	26	5424280--5424312	Novel	GGGTCTGCTGAGTCCGCA--GCAGGTGCAGGCCCAGT
+Ddx41	chr13	2	74	55635449--55635524	*	CCGAGCCAGCTCTCGC--GAGGGGCAGATGATGAGCC
+Nol7	chr13	4	76	43494024--43494104	*	GCGAGTGCTCGCA--GGGATAAAACGCTGTTGAAGGA
+Gtpbp4	chr13	2	80	8991097--8991177	*	GCACATAATCTTTAGCAACA--TTGTCCACCAAGTTT
+Pdlim7	chr13	5	81	55610171--55610255	*	TGCTCTGAACAGGCTGGGCT--CTGCTAAGACCCAGG

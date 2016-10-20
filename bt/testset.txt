@@ -1,0 +1,100 @@
+Running with options...
+  file with read data          /net/rsr/rsf_web/tmp/bowtie/ENCFF000MSY.fastq.unmapped.txt.split.bowtie.txt.split1stcolumn
+  max distance between matches 50000
+  length of samples            variable, auto-detect
+  refFlat file                 /home/acox/genomes/hg19.refFlat.txt
+  refFlat intron boundary file /home/acox/genomes/hg19.refFlat.txt.intronBoundary.exonsgaps
+  minimum splice length        2
+  tolerance of difference in position for supporting reads  5
+  base of file name for writing results                     /net/rsr/rsf-tests/ENCSR000BXX/rsf-results/ENCFF000MSY
+  minimum number of supporting reads                        2
+
+Finished processing data, results written to files.
+Number of entries in data file:             55180063
+Number of different reads:                  15845569
+Number of entries in refFlat file:          54052
+Number of entries in refFlat boundary file: 505731
+Number of matches:                          533830
+String table size:                          47409053
+VmRSS, memory resident set size:            9932152 kB
+Total time to process:                      2331 seconds
+Half lengths:                               min 15.953575 avg, range 15-21;  max 16.683407 avg, range 15-21
+GeneName	Chromosome	# supporting reads	# supporting halves	# supporting total	splice length	range of supporting reads	Novel or not (*)
+BET1L	chr11	5	0	5	141	205468--205611	*
+BET1L	chr11	4	6	6	284	205667--205952	*
+BET1L	chr11	1	5	5	1264	206038--207302	Novel
+BET1L	chr11	1	2	2	1259	206043--207302	*
+RIC8A	chr11	8	1	9	332	208936--209270	*
+RIC8A	chr11	7	0	7	3	209894--209900	Novel
+RIC8A	chr11	11	1	12	570	209998--210571	*
+RIC8A	chr11	1	2	3	125	210443--210568	Novel
+RIC8A	chr11	4	0	4	536	210661--211198	*
+RIC8A	chr11	1	9	9	1066	211348--212414	*
+RIC8A	chr11	5	0	5	103	212507--212615	*
+RIC8A	chr11	5	14	14	77	212758--212836	*
+RIC8A	chr11	1	5	5	317	212978--213295	*
+RIC8A	chr11	5	7	7	811	213415--214229	*
+SIRT3	chr11	2	0	2	6212	224238--230452	*
+PSMD13	chr11	6	11	14	1853	237144--238999	*
+PSMD13	chr11	2	3	4	4964	239074--244040	*
+PSMD13	chr11	2	2	4	209	244215--244425	*
+PSMD13	chr11	14	39	40	205	244467--244676	*
+PSMD13	chr11	1	50	50	1483	247445--248928	Novel
+PSMD13	chr11	6	17	17	1327	247446--248774	*
+PSMD13	chr11	15	11	19	76	248855--248931	*
+PSMD13	chr11	2	15	15	1745	249054--250799	*
+PSMD13	chr11	16	9	19	680	250863--251545	*
+PSMD13	chr11	1	15	15	1639	250864--252503	Novel
+PSMD13	chr11	7	11	14	193	251624--251821	*
+PSMD13	chr11	24	42	42	568	251933--252504	*
+ATHL1	chr11	9	0	9	314	290072--290390	*
+ATHL1	chr11	9	0	9	77	290599--290678	*
+ATHL1	chr11	3	0	3	862	291110--291975	*
+ATHL1	chr11	13	4	15	450	292092--292546	*
+ATHL1	chr11	6	6	10	208	292672--292885	Novel
+ATHL1	chr11	1	6	6	146	292674--292820	Novel
+ATHL1	chr11	4	2	5	208	292678--292886	*
+ATHL1	chr11	9	14	16	165	292996--293163	*
+ATHL1	chr11	3	2	4	130	293232--293365	*
+ATHL1	chr11	4	4	7	91	293501--293594	*
+ATHL1	chr11	2	0	2	102	293726--293829	*
+ATHL1	chr11	17	15	22	173	293923--294100	*
+ATHL1	chr11	5	5	7	70	294193--294267	*
+ATHL1	chr11	14	14	20	77	294475--294556	*
+B4GALNT4	chr11	1	2	2	449	372212--372661	*
+B4GALNT4	chr11	3	0	3	73	375773--375846	*
+B4GALNT4	chr11	2	2	2	117	375955--376074	*
+B4GALNT4	chr11	3	7	7	69	376350--376420	*
+B4GALNT4	chr11	1	2	2	379	380447--380826	*
+SIGIRR	chr11	1	1	2	322	405992--406314	Novel
+SIGIRR	chr11	1	3	3	289	406059--406348	*
+SIGIRR	chr11	1	1	2	304	406538--406842	*
+SIGIRR	chr11	2	2	3	68	406992--407061	*
+SIGIRR	chr11	5	1	6	248	407568--407817	*
+SIGIRR	chr11	1	4	4	488	408207--408695	*
+SIGIRR	chr11	1	1	2	1661	408207--409868	Novel
+SIGIRR	chr11	2	2	3	4795	410029--414824	*
+PTDSS2	chr11	1	5	5	663	459525--460188	Novel
+PTDSS2	chr11	2	5	5	13606	460286--473894	*
+PTDSS2	chr11	3	1	4	728	487468--488198	*
+PTDSS2	chr11	1	1	2	752	488647--489399	*
+PTDSS2	chr11	2	3	3	149	489733--489883	*
+PTDSS2	chr11	3	2	4	351	490067--490420	*
+RNH1	chr11	4	8	8	104	494778--494882	*
+RNH1	chr11	3	0	3	2917	495051--497971	*
+RNH1	chr11	1	1	2	315	498140--498455	*
+RNH1	chr11	1	3	3	135	498626--498761	*
+RNH1	chr11	4	11	11	81	498932--499014	*
+RNH1	chr11	1	2	2	643	499185--499828	*
+RNH1	chr11	4	8	8	484	499999--500485	*
+RNH1	chr11	1	8	8	469	500014--500483	Novel
+RNH1	chr11	7	0	7	1407	500653--502064	*
+RNH1	chr11	2	0	2	477	501584--502063	Novel
+RNH1	chr11	2	4	4	2642	502180--504822	*
+RNH1	chr11	2	4	4	4427	502180--506610	*
+RNH1	chr11	1	4	4	4931	502183--507114	*
+RNH1	chr11	2	4	5	1612	504995--506610	*
+HRAS	chr11	7	0	7	108	532522--532633	*
+HRAS	chr11	1	2	2	697	532754--533451	*
+HRAS	chr11	3	2	5	153	533611--533768	*
+HRAS	chr11	1	6	6	1471	533943--535414	Novel
