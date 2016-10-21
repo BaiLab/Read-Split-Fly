@@ -136,6 +136,7 @@ log "length of reads $readlength"
 log "Aligning reads... " 
 results=$(align $genome phase1 $reads $maxGood $destination )
 log "bowtie results basename(s)=${results}" 
+rsfbase=$(basename $results)
 
 #step 2: Split the unmapped reads into pieces
 log "splitting into pairs..." 
@@ -169,19 +170,23 @@ ${BOWTIE_INSPECT_RSR} -f $result -o default ${BOWTIE_INDEXES}/${genome}
 log "done adding spliced sequences."
 
 #step 7: Run miRNA and u12db blasts
-if [ $( echo "$eValue > 0" | bc ) -eq 1 ]; then
+# This will work, but it's not guaranteed bc is available...changing to only 0 for now
+#if [ $( echo "$eValue > 0" | bc ) -eq 1 ]; then
+if [ $eValue != "0" ]; then
   log "creating BLAST db and running queries..."
   log "Running ${BLAST_SCRIPT} $(dirname $result) ${eValue}"
   ${BLAST_SCRIPT} $(dirname $result) ${eValue}
   log "done running BLAST queries."
 else
-  log "Not running BLAST queries because e-value parameter <= 0"
+  #log "Not running BLAST queries because e-value parameter <= 0"
+  log "Not running BLAST queries because e-value parameter == 0"
 fi
 
+#step 8: Remove intermediate files
 if [ $RM_TEMP_FILES -ne 0 ]; then
   log "deleting intermediate files..."
-  rm -f ${BOWTIE_TEMP_DIR}/*
-  rm -f ${SPLIT_TEMP_DIR}/*
-  rm -f ${RSR_TEMP_DIR}/*
+  rm -f ${BOWTIE_TEMP_DIR}/${rsfbase}*
+  rm -f ${SPLIT_TEMP_DIR}/${rsfbase}*
+  rm -f ${RSR_TEMP_DIR}/${rsfbase}*
   log "finished deleting intermediate files"
 fi

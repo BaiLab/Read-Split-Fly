@@ -15,21 +15,23 @@ timing_end() { if [ ! -z "$START_TIME" ]; then log "Duration: $(( $(date +%s) - 
 
 
 #-------USER CONFIGURATION------------
+#-------Misc. Settings----------------
+RM_TEMP_FILES=1                             # set =1 to delete all intermediate files, =0 to keep them
+
 #-------Directories-------------------
-BOWTIE_INDEXES=/home/acox/genomes                 # No export, does it need it?
+BOWTIE_INDEXES=${BASEDIR}/bt/indexes        # Location where you store your bowtie indexes.  Comment out to use
+                                            #   BOWTIE_INDEXES environment variable instead
 BASE_TEMP_DIR="${BASEDIR}/tmp"
 BOWTIE_TEMP_DIR="${BASE_TEMP_DIR}/bowtie"
 SPLIT_TEMP_DIR="${BASE_TEMP_DIR}/split"
 RSR_TEMP_DIR="${BASE_TEMP_DIR}/splitpairs"
 LOG_DIR="${BASEDIR}/logs"
 BOWTIE_INDEX_ROOT=""
-REFDIR="${BOWTIE_INDEXES}"                        #where the refFlats are
-RM_TEMP_FILES=1                                   #set =0 to prevent pipeline.sh from deleting all intermediate files
+REFDIR="${BOWTIE_INDEXES}"                  #where the refFlats are
 
 #------Programs----------------------
-if [ -z "$BOWTIE_PROGRAM" ]; then
-export -p BOWTIE_PROGRAM="${BASEDIR}/bowtie/bowtie"
-fi
+BOWTIE_PROGRAM=""                                     # If left unset, we use the bowtie in bt/. If you want to use your own version of bowtie,
+                                                      #   provide the path here
 SPLIT_PROGRAM="${BASEDIR}/srr"                        # Program for splitting reads, compiled from split_read_rsr.c
 FORMAT_PROGRAM="${BASEDIR}/sfc"                       # Program for formatting reads, compiled from split_first_column.c
 RSR_PROGRAM="${BASEDIR}/sp4"                          # RSR Program ("split pairs"), compiled from splitPairs.cpp
@@ -40,10 +42,14 @@ BOWTIE_INSPECT_RSR="${BASEDIR}/bt/bowtie-inspect-RSR" # Program adds spliced seq
 #CHANGE THESE AT YOUR OWN RISK
 
 #Meta defines
+if [ -z "$BOWTIE_PROGRAM" ]; then
+export -p BOWTIE_PROGRAM="${BASEDIR}/bt/bowtie"
+fi
+
 export -p TERM=vt100                                        # this seems to be necessary for bowtie...
 if [ -z "$LOG_FILE" ] || [ -z "$RUN_ID" ]; then
 export -p RUN_ID="$(date +%F.%s)"
-export -p LOG_FILE="${LOG_DIR}/RSR_${RUN_ID}.log"
+export -p LOG_FILE="${LOG_DIR}/RSF_${RUN_ID}.log"
 fi
 
 BASES_TO_TRIM=0

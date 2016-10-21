@@ -6,7 +6,7 @@ This is the software package for the Read-Split-Fly pipeline. Included are the s
 
 ### Installing the pipeline:
 
-decompress rsr.tar.gz (tar -zxvf rsr.tar.gz) to the location of your choice; this is the **INSTALLATION DIRECTORY**.
+decompress rsr.tar.gz (*tar -zxvf rsr.tar.gz*) to the location of your choice; this is the **INSTALLATION DIRECTORY**.
 
 ### Perl 5.16 (or later):
 
@@ -103,23 +103,25 @@ All other variables are internal-use and should not be changed. Read the comment
 All shell scripts (files ending in .sh) rely on "rsf_config.sh," which holds the configuration data. Other scripts call upon other execuables as needed, depicted below.
 
     rsf_batch_job.sh
-        -pipeline.sh
-        -bowtie.sh
-            -guess-encoding.py
-                -Python 2.7 or newer
-            - bowtie v1.0.1 or newer
-        -split.sh
-            -srr
-        -sfc 
-        -splitPairs.sh
-            -sp4
+    |---pipeline.sh
+    |---bowtie.sh
+    |   |---bowtie v1.0.1 or newer
+    |   |---guess-encoding.py
+    |       |---Python 2.7 or newer
+    |---split.sh
+    |   |---srr
+    |---sfc 
+    |---splitPairs.sh
+    |   |---sp4
+    
     compare_sh
-        -compare
+    |---compare
     
     refFlat_parse_RSW.pl
-        Perl 5.16 or newer
+    |---Perl 5.16 or newer
+    
     sbc
-        -None
+    |---No dependencies
 
 ## RUNNING:
 
@@ -241,7 +243,7 @@ processing into the pipeline. We use the BLAST+ suite to compare various nucleot
 and U12DB databases against the candidate splice junctions identified by Read-Split-Fly.
 
 ### BLAST+
-[BLAST Homepage](ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+[BLAST Homepage](https://blast.ncbi.nlm.nih.gov/Blast.cgi)
 
 [BLAST+ Article](https://www.ncbi.nlm.nih.gov/pubmed/20003500?dopt=Citation)
 
