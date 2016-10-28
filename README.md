@@ -3,24 +3,23 @@
 This is the software package for the Read-Split-Fly pipeline. Included are the scripts and software necessary to run the entire process from beginning to end.
 
 ## INSTALLATION
+Download and unzip or clone the repository to a location of your choice.
 
 ### Build Executables
 1. Satisfy dependencies listed below.
-2. change to **BASE\_DIR** 
+2. change to the installation directory
 3. type *make clean*
 4. type *make*
 
-**Note:** Binaries are included in the package, but shouldn't be depended upon.
+**Note:** Binaries are currently included in the package to run right away, but it is recommended to build the software for your own system.
 
 ### Satisfy Dependencies(4)
-
 #### 1) Perl 5.16 (or later):
 
 The converter for the gene reference file (see below) requires Perl to run. We tested it with version 5.16, though it is likely that earlier versions will work. [Download Perl](http://www.perl.org). 
 
 To verify your installation of Perl is compatable, check the output of the command: 
 - *perl --version*
-
 
 #### 2) Python 2.7 (or later):
 
@@ -63,7 +62,7 @@ For the genomes to which you plan to align, download and uncompress their refFla
 
 **Note**: These files are case sensitive.
 
-The splitPairs portion of Read-Split-Fly requires a special parsed refFlat reference with intron/exon boundaries identified. We provide a script to create this file called *refflat\_parse\_RSW.pl* in the **RSF INSTALLATION DIECTORY**. Run this script and supply the refFlat reference file as the input argument.
+The splitPairs portion of Read-Split-Fly requires a special parsed refFlat reference with intron/exon boundaries identified. We provide a script to create this file called *refflat\_parse\_RSW.pl* in the **BASE\_DIR**. Run this script and supply the refFlat reference file as the input argument.
 
 - *perl refflat_parse_RSW.pl /usr/local/bowtie/indexes/hg19.refFlat.txt*
   - This generates the annotated file *hg19.refFlat.txt.intronBoundary.exonsgaps*
@@ -215,7 +214,7 @@ The quality-encoding detection portion of bowtie.sh is known to cause a broken p
 For questions, please contact Jeff Kinne <jkinne@cs.indstate.edu>
 
 Read-Split-Run is copyright(c) 2014-2015 Yongsheng Bai, Brandon Donham, Randal J. Kaufman, Jeff Kinne.
-<br>Read-Split-Fly is copyright(c) 2015-2016 Yongsheng Bai, Jeff Kinne, Aaron Cox, Feng Jiang.
+<br>Read-Split-Fly is copyright(c) 2015-2016 Yongsheng Bai, Jeff Kinne, Aaron Cox, Feng Jiang, Siva Dharman Naidu.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
