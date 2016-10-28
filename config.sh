@@ -17,7 +17,6 @@ timing_end() { if [ ! -z "$START_TIME" ]; then log "Duration: $(( $(date +%s) - 
 #-------USER CONFIGURATION------------
 #-------Misc. Settings----------------
 RM_TEMP_FILES=1                             # set =1 to delete all intermediate files, =0 to keep them
-
 #-------Directories-------------------
 BOWTIE_INDEXES=${BASEDIR}/bt/indexes        # Location where you store your bowtie indexes.  Comment out to use
                                             #   BOWTIE_INDEXES environment variable instead
@@ -28,18 +27,20 @@ RSR_TEMP_DIR="${BASE_TEMP_DIR}/splitpairs"
 LOG_DIR="${BASEDIR}/logs"
 BOWTIE_INDEX_ROOT=""
 REFDIR="${BOWTIE_INDEXES}"                  #where the refFlats are
+#------Programs----------------------
+BOWTIE_PROGRAM="${BASEDIR}/bt/bowtie"                 # by default, use the bowtie in bt/. If you want to use your own version of bowtie,
+
+
+#------NOT-USER CONFIGURATION--------
+#CHANGE THESE AT YOUR OWN RISK
 
 #------Programs----------------------
-BOWTIE_PROGRAM=""                                     # If left unset, we use the bowtie in bt/. If you want to use your own version of bowtie,
-                                                      #   provide the path here
 SPLIT_PROGRAM="${BASEDIR}/srr"                        # Program for splitting reads, compiled from split_read_rsr.c
 FORMAT_PROGRAM="${BASEDIR}/sfc"                       # Program for formatting reads, compiled from split_first_column.c
 RSR_PROGRAM="${BASEDIR}/sp4"                          # RSR Program ("split pairs"), compiled from splitPairs.cpp
 COMPARE_PROGRAM="${BASEDIR}/compare"                  # Program for comparing RSR outputs, compiled from 
 BOWTIE_INSPECT_RSR="${BASEDIR}/bt/bowtie-inspect-RSR" # Program adds spliced sequences to results file
 
-#------NOT-USER CONFIGURATION--------
-#CHANGE THESE AT YOUR OWN RISK
 
 #Meta defines
 if [ -z "$BOWTIE_PROGRAM" ]; then

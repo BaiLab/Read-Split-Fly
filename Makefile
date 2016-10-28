@@ -1,6 +1,6 @@
-all: sp sfc srr sbc compare blast_dir bt_dir
+all: sp4 sfc srr sbc compare blast_dir bt_dir
 
-sp: 
+sp4: 
 	g++ -O4 -o sp4 src/splitPairs.cpp -std=c++11
 
 sfc: 
@@ -24,12 +24,12 @@ bt/bowtie-inspect-l-RSR:
 blast/makeFASTA:
 	$(MAKE) -C blast
 
-.PHONY: clean-all
-clean-all: clean
-	$(MAKE) -C bt clean
-  
-.PHONY: clean
-clean:
+.PHONY: clean-small
+clean-small:
 	rm -f sp4 sfc srr sbc compare
 	$(MAKE) -C blast clean
+  
+.PHONY: clean
+clean: clean-small
+	$(MAKE) -C bt clean
   
