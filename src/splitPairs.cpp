@@ -2,8 +2,6 @@
   File:        splitPairs.cpp
 
   Copyright 2016 Jeff Kinne, Yongsheng Bai, Brandon Donham, Aaron Cox, Feng Jiang.
-  Permission to use for academic, non-profit purposes is granted, in which case this
-  copyright notice should be maintained and original authors acknowledged.
 
   Author:      Jeff Kinne, jkinne@cs.indstate.edu
 
