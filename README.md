@@ -11,8 +11,6 @@ Download and unzip or clone the repository to a location of your choice.
 3. type *make clean*
 4. type *make*
 
-**Note:** Binaries are currently included in the package to run right away, but it is recommended to build the software for your own system.
-
 ### Satisfy Dependencies(4)
 #### 1) Perl 5.16 (or later):
 
