@@ -3,13 +3,11 @@
 This is the software package for the Read-Split-Fly pipeline. Included are the scripts and software necessary to run the entire process from beginning to end.
 
 ## INSTALLATION
-Download and unzip or clone the repository to a location of your choice.
-
-### Build Executables
-1. Satisfy dependencies listed below.
-2. change to the installation directory
-3. type *make clean*
-4. type *make*
+1. Download and unzip or clone the repository to a location of your choice.
+2. Satisfy dependencies listed below.
+3. change to the installation directory
+4. type *make clean*
+5. type *make*
 
 ### Satisfy Dependencies(4)
 #### 1) Perl 5.16 (or later):
