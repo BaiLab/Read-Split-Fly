@@ -5,7 +5,6 @@
 
 #Bring in the configuration data
 #which had better be in the same directory as this script
-#BASEDIR=$(dirname $(realpath $0))
 BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )  #moved to this method to avoid platform-specific comamnds
 source "${BASEDIR}/config.sh"
 

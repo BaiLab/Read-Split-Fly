@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $(realpath $0))
+BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )  #moved to this method to avoid platform-specific comamnds
 source "${BASEDIR}/config.sh"
 
 function set_indexes() {

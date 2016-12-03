@@ -6,7 +6,7 @@
 # Everything in this script currently must be done from the
 # relative path of that directory.
 
-BASEDIR=$(dirname $(realpath $0))
+BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )
 source "${BASEDIR}/config.sh"
 
 make_fasta="${BASEDIR}/blast/makeFASTA"

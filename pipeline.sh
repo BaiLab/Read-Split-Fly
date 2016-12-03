@@ -5,7 +5,6 @@
 #for usage, see below
 
 #metadefine
-#BASEDIR=$(dirname $(realpath $0))
 BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )
 #bring in the configuration, which should be in the script's directory
 source "${BASEDIR}/config.sh"
