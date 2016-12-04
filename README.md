@@ -181,30 +181,32 @@ Here are presented example command-lines for doing various kinds of runs the ass
 
 #### Analytic runs:
 ##### Normal Run: 
-*rsw_batch_job.sh analytic mm9 "mus1.fastq" 11 11 3 30000 4 2 ~/mm9_results 0.1*
+*rsf_batch_job.sh analytic mm9 "mus1.fastq" 11 11 3 30000 4 2 ~/mm9_results 0.1*
 
 ##### Normal Run with Replicates:
-*rsw_batch_job analytic hg19 "hg19-1.fastq,hg19-2.fastq,hg19-3.fastq" 2 30 2 50000 5 2 ~/hg19_results 0.01*
+*rsf_batch_job analytic hg19 "hg19-1.fastq,hg19-2.fastq,hg19-3.fastq" 2 30 2 50000 5 2 ~/hg19_results 0.01*
 
 ##### Paired-Ended Run: 
-*rsw_batch_job.sh analytic hg19sp101 "hg19_1.fastq|hg19_2.fastq" 11 33 3 100000 5 2 ~/hg19_paired_results .001*
+*rsf_batch_job.sh analytic hg19sp101 "hg19_1.fastq|hg19_2.fastq" 11 33 3 100000 5 2 ~/hg19_paired_results .001*
 
 ##### Paired-Ended Run with Replicates:
-*rsw_batch_job analytic hg19sp101 "hg19-1_1.fastq,hg19-2_1.fastq|hg19-1_2.fastq,hg19-2_2.fastq" 11 33 3 50000 5 2 ~/hg19_pair_repl_results .1*
+*rsf_batch_job analytic hg19sp101 "hg19-1_1.fastq,hg19-2_1.fastq|hg19-1_2.fastq,hg19-2_2.fastq" 11 33 3 50000 5 2 ~/hg19_pair_repl_results .1*
 
 #### Comparative runs:
 ##### Normal Run: 
-*rsw_batch_job.sh comparison mm9 "set1.fastq" "set2.fastq" 2 15 3 30000 4 2 ~/mm9_compare 0.1*
+*rsf_batch_job.sh comparison mm9 "set1.fastq" "set2.fastq" 2 15 3 30000 4 2 ~/mm9_compare 0.1*
 
 ##### Normal Run with Replicates:
-*rsw_batch_job analytic hg19 "set1replicate1.fastq,set1replicate2.fastq" "set2replicate1.fastq,set2replicate2.fastq" 2 33 3 50000 5 2 ~/hg19_results 0.1*
+*rsf_batch_job analytic hg19 "set1replicate1.fastq,set1replicate2.fastq" "set2replicate1.fastq,set2replicate2.fastq" 2 33 3 50000 5 2 ~/hg19_results 0.1*
 
 ##### Paired-Ended Run:
-*rsw_batch_job.sh analytic hg19sp101 "set1_1.fastq|set1_2.fastq" "set2_1.fastq|set2_2.fastq" 11 33 3 50000 5 2 ~/hg19_paired_results 0.1*
+*rsf_batch_job.sh analytic hg19sp101 "set1_1.fastq|set1_2.fastq" "set2_1.fastq|set2_2.fastq" 11 33 3 50000 5 2 ~/hg19_paired_results 0.1*
 
 # KNOWN ISSUES
 
-The quality-encoding detection portion of bowtie.sh is known to cause a broken pipe with awk. This is acceptable and does not interfere with the performance of the pipeline.
+- The quality-encoding detection portion of bowtie.sh is known to cause a broken pipe with awk. This is acceptable and does not interfere with the performance of the pipeline.
+- There are currently some extra dependencies required for GNU- or Linux-specific software that we are actively working on removing.  This may show if if you are trying to run RSF on a Mac or in a stripped down Unix or Linux distribution.
+
 
 # COPYRIGHT
 For questions, please contact Jeff Kinne <jkinne@cs.indstate.edu>
