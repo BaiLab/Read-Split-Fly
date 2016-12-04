@@ -13,7 +13,7 @@ source "${BASEDIR}/config.sh"
 #Changed $# to 11 and added evalue for blast - Aaron
 if (( $# < 11 )); then
     yell "Not enough arguments."
-    yell "usage: $(basename $0) mode genome readsFile [readsFile2] maxGoodAlignments minSplitSize minSplitdistance maxSplitdistance regionBuffer requiredSupports pathToSaveResults evalueBlast"
+    yell "usage: $(python $BASENAME_SCRIPT $0) mode genome readsFile [readsFile2] maxGoodAlignments minSplitSize minSplitdistance maxSplitdistance regionBuffer requiredSupports pathToSaveResults evalueBlast"
     die "params($#): $@"
 fi
 

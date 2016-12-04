@@ -31,8 +31,8 @@ $make_fasta $target B
 #$make_fasta $target C <-- notNovel only
 #$make_fasta $target D <-- Novel only
 
-fasta_dir="${target}/$(basename $target)"
-results_fasta=$(basename $(ls ${fasta_dir} | grep -E 'FASTA.new$'))
+fasta_dir="${target}/$(python $BASENAME_SCRIPT $target)"
+results_fasta=$(python $BASENAME_SCRIPT $(ls ${fasta_dir} | grep -E 'FASTA.new$'))
 results_fasta="${fasta_dir}/${results_fasta}"
 
 blastn -query $miRNA_query -db ${results_fasta} -out ${target}/miRNA.hits -outfmt 6 -task blastn -reward 1 -dust yes -penalty -1 -gapopen 2 -gapextend 2 -evalue $e_value
@@ -52,4 +52,4 @@ for fl in "u12db_branch_extend_u12" "u12db_branch_u12"
 		blastn -query ${u12db_dir}/${fl} -db ${results_fasta} -out ${target}/${fl}.hits -outfmt 6 -task blastn -reward 1 -dust yes -penalty -1 -gapopen 2 -gapextend 2 -evalue $e_value
 done
 
-rm -fr $(basename $target)
+rm -fr $(python $BASENAME_SCRIPT $target)

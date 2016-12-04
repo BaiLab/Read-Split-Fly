@@ -4,12 +4,14 @@
 if [ -z "$CONFIGURED" ]; then
 CONFIGURED=true
 DEBUG=false
-BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )  #moved to this method to avoid platform-specific comamnds
-yell() { echo "$(basename $0): $*" >&2; }
+BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )     #moved to this method to avoid platform-specific comamnds
+BASENAME_SCRIPT="${BASEDIR}/src/utils/basedir.py" # Python clone of GNU basename program
+DIRNAME_SCRIPT="${BASEDIR}/src/utils/dirname.py"  # Python clone of GNU dirname program
+yell() { echo "$(python $BASENAME_SCRIPT $0): $*" >&2; }
 die() { yell "$*"; log "$*"; exit 111; kill $$; }
 try() { "$@" || die "cannot $*"; }
 dprint() { if $DEBUG; then yell "$*"; fi }
-log() { echo "$(basename $0): $*" >> "${LOG_FILE}"; dprint "$@"; }
+log() { echo "$(python $BASENAME_SCRIPT $0): $*" >> "${LOG_FILE}"; dprint "$@"; }
 timing_start() { if [ -z "$START_TIME" ]; then START_TIME=$(date +%s); fi }
 timing_end() { if [ ! -z "$START_TIME" ]; then log "Duration: $(( $(date +%s) - $START_TIME )) seconds"; fi }
 
@@ -40,7 +42,6 @@ FORMAT_PROGRAM="${BASEDIR}/sfc"                       # Program for formatting r
 RSR_PROGRAM="${BASEDIR}/sp4"                          # RSR Program ("split pairs"), compiled from splitPairs.cpp
 COMPARE_PROGRAM="${BASEDIR}/compare"                  # Program for comparing RSR outputs, compiled from 
 BOWTIE_INSPECT_RSR="${BASEDIR}/bt/bowtie-inspect-RSR" # Program adds spliced sequences to results file
-
 
 #Meta defines
 if [ -z "$BOWTIE_PROGRAM" ]; then

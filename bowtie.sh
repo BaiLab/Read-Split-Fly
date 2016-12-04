@@ -59,12 +59,12 @@ if [[ $3 =~ .*\|.* ]]; then # Paired mode
     IFS='|' read pair1 pair2 <<< "$3"
     IFS=$OIFS
     input_params="-1 $pair1 -2 $pair2"
-    outname=$(basename "$(echo $pair1 | cut -d, -f1)")
+    outname=$(python $BASENAME_SCRIPT "$(echo $pair1 | cut -d, -f1)")
     QUALS=$(awk 'NR % 4 == 0' $(echo "$pair1" | cut -d, -f1) | head -$(( $QUALITY_TESTS * 4)) | python $ENCODING_GUESSER -b -n $QUALITY_TESTS)
 
 else
     input_params=$3
-    outname=$(basename "$(echo $3 | cut -d, -f1)")
+    outname=$(python $BASENAME_SCRIPT "$(echo $3 | cut -d, -f1)")
     QUALS=$(awk 'NR % 4 == 0' $(echo "$3" | cut -d, -f1) | head -$(( $QUALITY_TESTS * 4)) | python $ENCODING_GUESSER -b -n $QUALITY_TESTS)
 fi
 

@@ -3,13 +3,6 @@ from __future__ import print_function
 
 import sys
 
-       path       dirname   basename
-       /usr/lib   /usr      lib
-       /usr/      /         usr
-       usr        .         usr
-       /          /         /
-       .          .         .
-       ..         .         ..
 
 if __name__ == "__main__":
   if len(sys.argv) != 2:
@@ -21,15 +14,23 @@ if __name__ == "__main__":
   if pname == "/":
     print("/")
   elif pname == "." or pname == "..":
-    print(pname)
+    print(".")
   elif "/" not in pname:
     print(".")
   elif pname[-1] == "/":
     loc = pname[0:-1].rfind("/")
-    print(pname[loc:-1])
+    if loc == 0:
+      print("/")
+    elif loc == -1:
+      print(".")
+    else:
+      print(pname[0:loc])
   else:
-    loc = pname[0:-2].rfind("/")
-    print(pname[loc+1:])
+    loc = pname.rfind("/")
+    if loc == 0:
+      print("/")
+    else:
+      print(pname[0:loc])
 
   sys.exit(0)
   
