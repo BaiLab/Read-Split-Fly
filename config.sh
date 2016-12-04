@@ -5,7 +5,7 @@ if [ -z "$CONFIGURED" ]; then
 CONFIGURED=true
 DEBUG=false
 BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )     #moved to this method to avoid platform-specific comamnds
-BASENAME_SCRIPT="${BASEDIR}/src/utils/basedir.py" # Python clone of GNU basename program
+BASENAME_SCRIPT="${BASEDIR}/src/utils/basename.py" # Python clone of GNU basename program
 DIRNAME_SCRIPT="${BASEDIR}/src/utils/dirname.py"  # Python clone of GNU dirname program
 yell() { echo "$(python $BASENAME_SCRIPT $0): $*" >&2; }
 die() { yell "$*"; log "$*"; exit 111; kill $$; }
@@ -20,7 +20,7 @@ timing_end() { if [ ! -z "$START_TIME" ]; then log "Duration: $(( $(date +%s) - 
 #-------Misc. Settings----------------
 RM_TEMP_FILES=1                             # set =1 to delete all intermediate files, =0 to keep them
 #-------Directories-------------------
-BOWTIE_INDEXES=${BASEDIR}/bt/indexes        # Location where you store your bowtie indexes.  Comment out to use
+BOWTIE_INDEXES="${BASEDIR}/bt/indexes"      # Location where you store your bowtie indexes.  Comment out to use
                                             #   BOWTIE_INDEXES environment variable instead
 BASE_TEMP_DIR="${BASEDIR}/tmp"
 BOWTIE_TEMP_DIR="${BASE_TEMP_DIR}/bowtie"
@@ -30,7 +30,10 @@ LOG_DIR="${BASEDIR}/logs"
 BOWTIE_INDEX_ROOT=""
 REFDIR="${BOWTIE_INDEXES}"                  #where the refFlats are
 #------Programs----------------------
-BOWTIE_PROGRAM="${BASEDIR}/bt/bowtie"                 # by default, use the bowtie in bt/. If you want to use your own version of bowtie,
+BOWTIE_PROGRAM="${BASEDIR}/bt/bowtie"       # by default, use the bowtie in bt/
+#--------------------------------------------------------------------------
+
+
 
 
 #------NOT-USER CONFIGURATION--------
