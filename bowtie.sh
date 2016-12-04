@@ -70,7 +70,8 @@ fi
 
 #number of threads is now 1/4 of total cores on the system--this doesn't seem
 # to be slower than using 3/4 of total cores
-bowtie_params="-t --chunkmbs 2048 -p $(( $(grep -c ^processor /proc/cpuinfo) * 1 / 4)) "
+#bowtie_params="-t --chunkmbs 2048 -p $(( $(grep -c ^processor /proc/cpuinfo) * 1 / 4)) "
+bowtie_params="-t --chunkmbs 2048 -p $NUM_THREADS "
 if [ "$2" == "phase1" ]; then
 	bowtie_params+="-n 3 -e 112"
 elif [ "$2" == "phase2" ]; then

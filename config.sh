@@ -19,6 +19,7 @@ timing_end() { if [ ! -z "$START_TIME" ]; then log "Duration: $(( $(date +%s) - 
 #-------USER CONFIGURATION------------
 #-------Misc. Settings----------------
 RM_TEMP_FILES=1                             # set =1 to delete all intermediate files, =0 to keep them
+NUM_THREADS=4                               # The number of concurrent threads to use in the alignment steps
 #-------Directories-------------------
 BOWTIE_INDEXES="${BASEDIR}/bt/indexes"      # Location where you store your bowtie indexes.  Comment out to use
                                             #   BOWTIE_INDEXES environment variable instead
