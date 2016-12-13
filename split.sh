@@ -13,8 +13,8 @@ function n_split() {
         output=$LOG_FILE
     fi
     $SPLIT_PROGRAM "$1" "$2" "$SPLIT_TEMP_DIR" >> $output
-    log "n_split:: ${SPLIT_TEMP_DIR}/$(basename $1).split"
-    echo "${SPLIT_TEMP_DIR}/$(basename $1).split"
+    log "n_split:: ${SPLIT_TEMP_DIR}/$(python $BASENAME_SCRIPT $1).split"
+    echo "${SPLIT_TEMP_DIR}/$(python $BASENAME_SCRIPT $1).split"
 }
 
 #input: resultsFileBase minimum-cut-size readsLength 
@@ -48,12 +48,12 @@ function split_pairs() {
 #-----Main---
 
 if (( $# < 2 )); then
-    yell "Usage: $(basename $0) <reads filename base> <min split>"
+    yell "Usage: $(python $BASENAME_SCRIPT $0) <reads filename base> <min split>"
     yell "The reads filename should be the part before the \"unmapped.txt\" or \"unmapped_1.txt\""
     yell "The script will detect whether there is a pair and split both."
     yell "examples: "
     yell "if your file to split is \"Dtt_KO.txt.unmapped.txt\" and you wanted a minimum split of 11bp, then..."
-    yell "         $(basename $0) Dtt_KO.txt 11"
+    yell "         $(python $BASENAME_SCRIPT $0) Dtt_KO.txt 11"
 else
     echo $(split_pairs $@)
 fi

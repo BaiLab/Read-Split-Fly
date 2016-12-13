@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $(realpath $0))
+BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )
 source "${BASEDIR}/config.sh"
 
 OPTSFILE="" #to be filled-in
@@ -40,7 +40,7 @@ function make_options_file() {
     echo "$5" >> $OPTSFILE  #minSplitDistance
     echo "$7" >> $OPTSFILE  #Support tolerance
     if [ -z "$OUTPUTFILE" ]; then
-        OUTPUTFILE="${9}/$(echo "$(basename $2)" | cut -d. -f1)"
+        OUTPUTFILE="${9}/$(echo "$(python $BASENAME_SCRIPT $2)" | cut -d. -f1)"
     fi
     echo "$OUTPUTFILE" >> $OPTSFILE  #results base name
     echo "$8" >> $OPTSFILE   #required supports
@@ -85,8 +85,8 @@ date=$(date +%s)
 
 genome=$1
 log "fyi: \$2 = $2"
-OPTSFILE="$RSR_TEMP_DIR/$(basename $2).${date}.options.txt"
-OUTPUTFILE="$9/$(echo "$(basename $2)" | cut -d. -f1)"
+OPTSFILE="$RSR_TEMP_DIR/$(python $BASENAME_SCRIPT $2).${date}.options.txt"
+OUTPUTFILE="$9/$(echo "$(python $BASENAME_SCRIPT $2)" | cut -d. -f1)"
 
 make_options_file $*
 

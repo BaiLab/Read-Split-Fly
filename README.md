@@ -72,6 +72,9 @@ The configuration file *config.sh* contains all the configurable values used by 
 - ***RM\_TEMP\_FILES*** Set to 1 to delete intermedite files at the end of RSF execution, 0 to keep them
   - Default: 1
 
+- ***NUM\_THREADS*** Number of concurrent threads to use for bowtie alignment steps
+  - Default: 4
+
 - ***BASE_TEMP_DIR:*** With default settings, location where different intermediate files are stored
   - Default: **BASE\_DIR**/tmp
 

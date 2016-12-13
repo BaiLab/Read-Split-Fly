@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $(realpath $0))
+BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )  #moved to this method to avoid platform-specific comamnds
 source "${BASEDIR}/config.sh"
 
 function set_indexes() {
@@ -59,18 +59,19 @@ if [[ $3 =~ .*\|.* ]]; then # Paired mode
     IFS='|' read pair1 pair2 <<< "$3"
     IFS=$OIFS
     input_params="-1 $pair1 -2 $pair2"
-    outname=$(basename "$(echo $pair1 | cut -d, -f1)")
+    outname=$(python $BASENAME_SCRIPT "$(echo $pair1 | cut -d, -f1)")
     QUALS=$(awk 'NR % 4 == 0' $(echo "$pair1" | cut -d, -f1) | head -$(( $QUALITY_TESTS * 4)) | python $ENCODING_GUESSER -b -n $QUALITY_TESTS)
 
 else
     input_params=$3
-    outname=$(basename "$(echo $3 | cut -d, -f1)")
+    outname=$(python $BASENAME_SCRIPT "$(echo $3 | cut -d, -f1)")
     QUALS=$(awk 'NR % 4 == 0' $(echo "$3" | cut -d, -f1) | head -$(( $QUALITY_TESTS * 4)) | python $ENCODING_GUESSER -b -n $QUALITY_TESTS)
 fi
 
 #number of threads is now 1/4 of total cores on the system--this doesn't seem
 # to be slower than using 3/4 of total cores
-bowtie_params="-t --chunkmbs 2048 -p $(( $(grep -c ^processor /proc/cpuinfo) * 1 / 4)) "
+#bowtie_params="-t --chunkmbs 2048 -p $(( $(grep -c ^processor /proc/cpuinfo) * 1 / 4)) "
+bowtie_params="-t --chunkmbs 2048 -p $NUM_THREADS "
 if [ "$2" == "phase1" ]; then
 	bowtie_params+="-n 3 -e 112"
 elif [ "$2" == "phase2" ]; then
