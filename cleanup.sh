@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $(realpath $0))
+BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )
 source "${BASEDIR}/config.sh"
 
 FIND_MODIFIERS="-L"

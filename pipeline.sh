@@ -5,7 +5,6 @@
 #for usage, see below
 
 #metadefine
-#BASEDIR=$(dirname $(realpath $0))
 BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )
 #bring in the configuration, which should be in the script's directory
 source "${BASEDIR}/config.sh"
@@ -136,7 +135,7 @@ log "length of reads $readlength"
 log "Aligning reads... " 
 results=$(align $genome phase1 $reads $maxGood $destination )
 log "bowtie results basename(s)=${results}" 
-rsfbase=$(basename $results)
+rsfbase=$(python $BASENAME_SCRIPT $results)
 
 #step 2: Split the unmapped reads into pieces
 log "splitting into pairs..." 
@@ -174,8 +173,8 @@ log "done adding spliced sequences."
 #if [ $( echo "$eValue > 0" | bc ) -eq 1 ]; then
 if [ $eValue != "0" ]; then
   log "creating BLAST db and running queries..."
-  log "Running ${BLAST_SCRIPT} $(dirname $result) ${eValue}"
-  ${BLAST_SCRIPT} $(dirname $result) ${eValue}
+  log "Running ${BLAST_SCRIPT} $(python $DIRNAME_SCRIPT $result) ${eValue}"
+  ${BLAST_SCRIPT} $(python $DIRNAME_SCRIPT $result) ${eValue}
   log "done running BLAST queries."
 else
   #log "Not running BLAST queries because e-value parameter <= 0"

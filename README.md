@@ -3,15 +3,11 @@
 This is the software package for the Read-Split-Fly pipeline. Included are the scripts and software necessary to run the entire process from beginning to end.
 
 ## INSTALLATION
-Download and unzip or clone the repository to a location of your choice.
-
-### Build Executables
-1. Satisfy dependencies listed below.
-2. change to the installation directory
-3. type *make clean*
-4. type *make*
-
-**Note:** Binaries are currently included in the package to run right away, but it is recommended to build the software for your own system.
+1. Download and unzip or clone the repository to a location of your choice.
+2. Satisfy dependencies listed below.
+3. change to the installation directory
+4. type *make clean*
+5. type *make*
 
 ### Satisfy Dependencies(4)
 #### 1) Perl 5.16 (or later):
@@ -75,6 +71,9 @@ The configuration file *config.sh* contains all the configurable values used by 
 
 - ***RM\_TEMP\_FILES*** Set to 1 to delete intermedite files at the end of RSF execution, 0 to keep them
   - Default: 1
+
+- ***NUM\_THREADS*** Number of concurrent threads to use for bowtie alignment steps
+  - Default: 4
 
 - ***BASE_TEMP_DIR:*** With default settings, location where different intermediate files are stored
   - Default: **BASE\_DIR**/tmp
@@ -185,30 +184,32 @@ Here are presented example command-lines for doing various kinds of runs the ass
 
 #### Analytic runs:
 ##### Normal Run: 
-*rsw_batch_job.sh analytic mm9 "mus1.fastq" 11 11 3 30000 4 2 ~/mm9_results 0.1*
+*rsf_batch_job.sh analytic mm9 "mus1.fastq" 11 11 3 30000 4 2 ~/mm9_results 0.1*
 
 ##### Normal Run with Replicates:
-*rsw_batch_job analytic hg19 "hg19-1.fastq,hg19-2.fastq,hg19-3.fastq" 2 30 2 50000 5 2 ~/hg19_results 0.01*
+*rsf_batch_job analytic hg19 "hg19-1.fastq,hg19-2.fastq,hg19-3.fastq" 2 30 2 50000 5 2 ~/hg19_results 0.01*
 
 ##### Paired-Ended Run: 
-*rsw_batch_job.sh analytic hg19sp101 "hg19_1.fastq|hg19_2.fastq" 11 33 3 100000 5 2 ~/hg19_paired_results .001*
+*rsf_batch_job.sh analytic hg19sp101 "hg19_1.fastq|hg19_2.fastq" 11 33 3 100000 5 2 ~/hg19_paired_results .001*
 
 ##### Paired-Ended Run with Replicates:
-*rsw_batch_job analytic hg19sp101 "hg19-1_1.fastq,hg19-2_1.fastq|hg19-1_2.fastq,hg19-2_2.fastq" 11 33 3 50000 5 2 ~/hg19_pair_repl_results .1*
+*rsf_batch_job analytic hg19sp101 "hg19-1_1.fastq,hg19-2_1.fastq|hg19-1_2.fastq,hg19-2_2.fastq" 11 33 3 50000 5 2 ~/hg19_pair_repl_results .1*
 
 #### Comparative runs:
 ##### Normal Run: 
-*rsw_batch_job.sh comparison mm9 "set1.fastq" "set2.fastq" 2 15 3 30000 4 2 ~/mm9_compare 0.1*
+*rsf_batch_job.sh comparison mm9 "set1.fastq" "set2.fastq" 2 15 3 30000 4 2 ~/mm9_compare 0.1*
 
 ##### Normal Run with Replicates:
-*rsw_batch_job analytic hg19 "set1replicate1.fastq,set1replicate2.fastq" "set2replicate1.fastq,set2replicate2.fastq" 2 33 3 50000 5 2 ~/hg19_results 0.1*
+*rsf_batch_job analytic hg19 "set1replicate1.fastq,set1replicate2.fastq" "set2replicate1.fastq,set2replicate2.fastq" 2 33 3 50000 5 2 ~/hg19_results 0.1*
 
 ##### Paired-Ended Run:
-*rsw_batch_job.sh analytic hg19sp101 "set1_1.fastq|set1_2.fastq" "set2_1.fastq|set2_2.fastq" 11 33 3 50000 5 2 ~/hg19_paired_results 0.1*
+*rsf_batch_job.sh analytic hg19sp101 "set1_1.fastq|set1_2.fastq" "set2_1.fastq|set2_2.fastq" 11 33 3 50000 5 2 ~/hg19_paired_results 0.1*
 
 # KNOWN ISSUES
 
-The quality-encoding detection portion of bowtie.sh is known to cause a broken pipe with awk. This is acceptable and does not interfere with the performance of the pipeline.
+- The quality-encoding detection portion of bowtie.sh is known to cause a broken pipe with awk. This is acceptable and does not interfere with the performance of the pipeline.
+- There are currently some extra dependencies required for GNU- or Linux-specific software that we are actively working on removing.  This may show if if you are trying to run RSF on a Mac or in a stripped down Unix or Linux distribution.
+
 
 # COPYRIGHT
 For questions, please contact Jeff Kinne <jkinne@cs.indstate.edu>

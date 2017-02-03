@@ -5,7 +5,6 @@
 
 #Bring in the configuration data
 #which had better be in the same directory as this script
-#BASEDIR=$(dirname $(realpath $0))
 BASEDIR=$( cd ${0%/*} >& /dev/null ; pwd -P )  #moved to this method to avoid platform-specific comamnds
 source "${BASEDIR}/config.sh"
 
@@ -14,7 +13,7 @@ source "${BASEDIR}/config.sh"
 #Changed $# to 11 and added evalue for blast - Aaron
 if (( $# < 11 )); then
     yell "Not enough arguments."
-    yell "usage: $(basename $0) mode genome readsFile [readsFile2] maxGoodAlignments minSplitSize minSplitdistance maxSplitdistance regionBuffer requiredSupports pathToSaveResults evalueBlast"
+    yell "usage: $(python $BASENAME_SCRIPT $0) mode genome readsFile [readsFile2] maxGoodAlignments minSplitSize minSplitdistance maxSplitdistance regionBuffer requiredSupports pathToSaveResults evalueBlast"
     die "params($#): $@"
 fi
 
