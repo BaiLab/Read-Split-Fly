@@ -6,8 +6,7 @@ This is the software package for the Read-Split-Fly pipeline. Included are the s
 1. Download and unzip or clone the repository to a location of your choice.
 2. Satisfy dependencies listed below.
 3. change to the installation directory
-4. type *make clean*
-5. type *make*
+4. type *make*
 
 ### Satisfy Dependencies(4)
 #### 1) Perl 5.16 (or later):
@@ -171,7 +170,7 @@ After that, you can execute *rsf\_batch\_job.sh* with the following inputs, in o
 - **requiredSupports:** *<integer>*
   - Minimum number of supporting reads a splie-junction candidate must have to be reported.
 
-- **pathToSaveFesults:** *<string>*
+- **pathToSaveResults:** *<string>*
   - Path to directory where RSF results will be stored.
 
 - **BLAST e-value:** *<decimal>*
