@@ -103,7 +103,6 @@ function rsr() {
     if (( $? )); then die "Failed to do candidate matching. Aborting"; fi
 }
 
-
 ##--------Main-----------
 # Added 1 to $# for e-value
 if (( $# < 10 )); then
@@ -115,6 +114,9 @@ fi
 genome=$1
 readlength=0
 reads=$2
+log "oldreads: $reads"
+reads=${reads//|/,}  # run paired-ended data as single-ended
+log "newreads: $reads"
 maxGood=$3
 destination=$9
 eValue=${10}

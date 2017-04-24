@@ -1,7 +1,0 @@
-This is a header line.
-Another header line.
-
-After a random empty line, here is another header line.
-
-GeneName
-Xbp1	chr11	22	26	5424280--5424312	Novel	GGGTCTGCTGAGTCC--GGTGCAGGCCCAGT
