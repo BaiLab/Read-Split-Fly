@@ -117,6 +117,7 @@ reads=$2
 log "oldreads: $reads"
 reads=${reads//|/,}  # run paired-ended data as single-ended
 log "newreads: $reads"
+log "note: oldreads and newreads should be different if you attempted to execute a paired-ended run with '|'"
 maxGood=$3
 destination=$9
 eValue=${10}
